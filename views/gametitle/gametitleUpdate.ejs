@@ -1,0 +1,25 @@
+<%- include("../includes/header.ejs", {title: "Update " + GAME_TITLES.Game_Title}); %>
+
+<h1>Update <%= GAME_TITLES.Game_Title%></h1>
+<form action="/gametitle/update" method="get">
+
+
+    <input type="hidden" id="gametitle_id" name="gametitle_id" value="<%= GAME_TITLES.gametitle_id %>">
+    Game Title: <input id="Game_Title" name="Game_Title" type="text" value="<%= GAME_TITLES.Game_Title%>"/>
+    <br />
+
+    Team Based or 1v1:
+    <select id="Team_Based_or_1v1" name="Team_Based_or_1v1">
+        <option value="<%= 'Team' %>"> Team </option>
+        <option value="<%= '1v1' %>"> 1v1 </option>
+    </select>
+
+    <br />
+
+    <br />
+
+    <input type="submit" />
+
+</form>
+
+<%- include("../includes/footer.ejs"); %>

@@ -1,0 +1,20 @@
+<%- include("../includes/header.ejs", {title:"Add New Game Title"}); %>
+
+
+<h1>Add New Game Title</h1>
+<form action="/gametitle/insert" method="get">
+    Game Title: <input id="Game_Title" name="Game_Title" type="text" /> <br />
+
+    Team Based or 1v1:
+    <select id="Team_Based_or_1v1" name="Team_Based_or_1v1">
+        <option value="<%= 'Team' %>"> Team </option>
+        <option value="<%= '1v1' %>"> 1v1 </option>
+    </select>
+
+    <br />
+
+
+    <input type="submit" />
+
+</form>
+<%- include("../includes/footer.ejs"); %>
