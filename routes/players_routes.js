@@ -38,22 +38,35 @@ router.get('/', function(req, res){
                 for(var i=0; i < result.length; i++){
                     MapStage[i] = [result[i].MapStage, result[i].MapStage_Winrate];
                 }
-                //console.log(MapStage);
-
-
 
                 for(var i=0; i < result.length; i++){
-                    CharacterHero[i] = result[i].CharacterHero;
+                    CharacterHero[i] = [result[i].CharacterHero, result[i].CharacterHero_Winrate];
                 }
 
+                uniq_MapStage = [];
+                for(var i=0; i < MapStage.length-1; i++){
+                    if (MapStage[i][0] != MapStage[i+1][0]) {
+                        uniq_MapStage.push(MapStage[i]);
+                    }
+                }
+/*
+                uniq_CharacterHero = [];
+                for(var i=0; i < CharacterHero.length-1; i++){
+                    if (CharacterHero[i][0] != CharacterHero[i+1][0]){
+                        uniq_CharacterHero.push(CharacterHero[i]);
+                    }
+                }
+*/
+/*
                 var uniq_MapStage = MapStage.filter(function (elem, index, self) {
                     return index == self.indexOf(elem);
                 });
-
+*/
                 var uniq_CharacterHero = CharacterHero.filter(function (elem, index, self) {
                     return index == self.indexOf(elem);
                 });
 
+                console.log('UNIQUE??????????????');
                 console.log(uniq_MapStage);
 
                 res.render('players/playersViewById', {'result': result[0], 'MapStage': uniq_MapStage, 'CharacterHero': uniq_CharacterHero});

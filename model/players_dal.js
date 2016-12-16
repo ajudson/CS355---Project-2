@@ -15,7 +15,6 @@ exports.getById = function(player_name, callback) {
     var queryData = [player_name];
 
     connection.query(query, queryData, function(err, result) {
-        console.log(result[0]);
         callback(err, result[0]);
     });
 };

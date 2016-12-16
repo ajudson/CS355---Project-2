@@ -6,15 +6,15 @@
     <li>Game Title They Play: <%= result.game_title %></li>
 
     <% if(result.KDA != null){ %>
-    <li>KDA: <%= result[0].KDA %></li>
+    <li>KDA: <%= result.KDA %></li>
     <% } %>
 
 
     <% if(result.MapStage_Winrate != null){ %>
-    <li>map stages:
+    <li>Maps/Stages and their Winrates:
         <ul>
             <% for(var i=0; MapStage.length > i; i++ ) { %>
-            <li><%= MapStage[i] %> <%= ': '%>  <%= MapStage[i].MapStage_Winrate %></li>
+            <li><%= MapStage[i][0] %> <%= ': '%>  <%= MapStage[i][1] %> <%='%'%></li>
             <% } %>
         </ul>
     </li>
@@ -23,10 +23,10 @@
 
 
     <% if(result.CharacterHero_Winrate != null){ %>
-    <li>Character/Hero Winrates:
+    <li>Characters/Heroes and their Winrates:
         <ul>
-            <% for(var i=0; result.length > i; i++ ) { %>
-            <li><%= result[i].ChracterHero%>: sdafadsf<%= result[i].CharacterHero_Winrate %></li>
+            <% for(var i=0; CharacterHero.length > i; i++ ) { %>
+            <li><%= CharacterHero[i][0] %> <%= ': '%> <%= CharacterHero[i][1] %> <%='%'%></li>
             <% } %>
         </ul>
     </li>
