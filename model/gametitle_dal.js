@@ -11,10 +11,15 @@ exports.getAll = function(callback) {
 };
 
 exports.getById = function(Game_Title, callback) {
-    var query = 'SELECT * FROM GAME_TITLES WHERE Game_Title = ?';
+    var query = 'SELECT gt.*, ch.CharacterHero, ms.MapStage FROM GAME_TITLES gt ' +
+        'LEFT JOIN CharacterHero ch on gt.Game_Title = ch.Game_Title ' +
+        'LEFT JOIN MapStage ms on gt.Game_Title = ms.Game_Title ' +
+        'WHERE gt.Game_Title = ? ';
     var queryData = [Game_Title];
-
+   ;
     connection.query(query, queryData, function(err, result) {
+        console.log(result.width);
+        console.log(result);
         callback(err, result);
     });
 };

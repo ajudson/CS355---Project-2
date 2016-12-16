@@ -1,9 +1,38 @@
-<%- include("../includes/header.ejs", {title:"Players - " + result[0].Player_Name}); %>
+<%- include("../includes/header.ejs", {title:"Players - " + result.player_name}); %>
 
 <h1>Player:</h1>
 <ul>
-    <li>Player Name: <%= result[0].Player_Name%></li>
-    <li>Game Title They Play: <%= result[0].Game_Title %></li>
+    <li>Player Name: <%= result.player_name%></li>
+    <li>Game Title They Play: <%= result.game_title %></li>
+
+    <% if(result.KDA != null){ %>
+    <li>KDA: <%= result[0].KDA %></li>
+    <% } %>
+
+
+    <% if(result.MapStage_Winrate != null){ %>
+    <li>map stages:
+        <ul>
+            <% for(var i=0; MapStage.length > i; i++ ) { %>
+            <li><%= MapStage[i] %> <%= ': '%>  <%= MapStage[i].MapStage_Winrate %></li>
+            <% } %>
+        </ul>
+    </li>
+    <% } %>
+
+
+
+    <% if(result.CharacterHero_Winrate != null){ %>
+    <li>Character/Hero Winrates:
+        <ul>
+            <% for(var i=0; result.length > i; i++ ) { %>
+            <li><%= result[i].ChracterHero%>: sdafadsf<%= result[i].CharacterHero_Winrate %></li>
+            <% } %>
+        </ul>
+    </li>
+    <% } %>
+
+
 </ul>
 <br />
 <a href="/players/all"><< back</a>

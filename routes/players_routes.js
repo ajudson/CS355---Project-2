@@ -28,7 +28,35 @@ router.get('/', function(req, res){
                 res.send(err);
             }
             else {
-                res.render('players/playersViewById', {'result': result});
+                //console.log('LENGTH IS:');
+                //console.log(result.length);
+                //console.log(result);
+
+                MapStage = [result.length];
+                CharacterHero = [result.length];
+
+                for(var i=0; i < result.length; i++){
+                    MapStage[i] = [result[i].MapStage, result[i].MapStage_Winrate];
+                }
+                //console.log(MapStage);
+
+
+
+                for(var i=0; i < result.length; i++){
+                    CharacterHero[i] = result[i].CharacterHero;
+                }
+
+                var uniq_MapStage = MapStage.filter(function (elem, index, self) {
+                    return index == self.indexOf(elem);
+                });
+
+                var uniq_CharacterHero = CharacterHero.filter(function (elem, index, self) {
+                    return index == self.indexOf(elem);
+                });
+
+                console.log(uniq_MapStage);
+
+                res.render('players/playersViewById', {'result': result[0], 'MapStage': uniq_MapStage, 'CharacterHero': uniq_CharacterHero});
             }
         });
     }

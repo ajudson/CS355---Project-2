@@ -27,7 +27,26 @@ router.get('/', function(req, res){
                 res.send(err);
             }
             else {
-                res.render('gametitle/gametitleViewById', {'result': result});
+                CharacterHero = [result.length];
+                MapStage = [result.length];
+
+                for(var i=0; i < result.length; i++){
+                    CharacterHero[i] = result[i].CharacterHero;
+                }
+
+                for(var i=0; i < result.length; i++){
+                    MapStage[i] = result[i].MapStage;
+                }
+
+                var uniq_CharacterHero = CharacterHero.filter(function (elem, index, self) {
+                    return index == self.indexOf(elem);
+                });
+
+                var uniq_MapStage = MapStage.filter(function (elem, index, self) {
+                    return index == self.indexOf(elem);
+                });
+
+                res.render('gametitle/gametitleViewById', {'result': result, 'CharacterHero': uniq_CharacterHero, 'MapStage': uniq_MapStage});
             }
         });
     }

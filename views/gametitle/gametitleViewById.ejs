@@ -4,6 +4,23 @@
 <ul>
     <li>Game Title: <%= result[0].Game_Title%></li>
     <li>Team Based or 1v1: <%= result[0].Team_Based_or_1v1 %></li>
+    <li>Characters/Heroes:
+        <ul>
+            <% for(var i=0; CharacterHero.length > i; i++) { %>
+            <li><%= CharacterHero[i] %></li>
+            <% } %>
+        </ul>
+    </li>
+
+    <br />
+
+    <li>Maps/Stages:
+        <ul>
+            <% for(var i=0; MapStage.length > i; i++) { %>
+            <li><%= MapStage[i] %></li>
+            <% } %>
+        </ul>
+    </li>
 </ul>
 <br />
 <a href="/gametitle/all"><< back</a>

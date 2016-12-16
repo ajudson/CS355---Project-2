@@ -10,12 +10,13 @@ exports.getAll = function(callback) {
     });
 };
 
-exports.getById = function(Player_Name, callback) {
-    var query = 'SELECT * FROM PLAYERS WHERE Player_Name = ?';
-    var queryData = [Player_Name];
+exports.getById = function(player_name, callback) {
+    var query = 'CALL PlayerStats(?);';
+    var queryData = [player_name];
 
     connection.query(query, queryData, function(err, result) {
-        callback(err, result);
+        console.log(result[0]);
+        callback(err, result[0]);
     });
 };
 
