@@ -52,9 +52,9 @@ exports.edit = function(Team_Name, callback) {
 };
 
 exports.update = function(params, callback) {
-    var query = 'UPDATE TEAM SET Team_Name = ? WHERE team_id = ?';
+    var query = 'UPDATE TEAM SET Team_Name = ? WHERE team_id = ? ';
     var queryData = [params.Team_Name, params.team_id];
-
+    console.log(params.Team_Name);
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
     });

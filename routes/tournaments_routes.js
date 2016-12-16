@@ -28,6 +28,7 @@ router.get('/', function(req, res){
                 res.send(err);
             }
             else {
+                console.log(result);
                 res.render('tournaments/tournamentsViewById', {'result': result});
             }
         });

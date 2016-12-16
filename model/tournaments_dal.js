@@ -11,10 +11,13 @@ exports.getAll = function(callback) {
 };
 
 exports.getById = function(Tournament_Name, callback) {
-    var query = 'SELECT * FROM TOURNAMENTS WHERE Tournament_Name = ?';
+    var query = 'SELECT t.*, tpit.Team_Name, tpit.Rank FROM TOURNAMENTS t ' +
+        'LEFT JOIN Team_Participating_in_Tournament tpit on t.Tournament_Name = tpit.Tournament_Name ' +
+        'WHERE t.Tournament_Name = ? ';
     var queryData = [Tournament_Name];
 
     connection.query(query, queryData, function(err, result) {
+        console.log(err);
         callback(err, result);
     });
 };
