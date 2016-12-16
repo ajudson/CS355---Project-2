@@ -1,0 +1,26 @@
+<%- include("../includes/header.ejs", {title: "Update " + PLAYERS.Player_Name}); %>
+
+<h1>Update <%= PLAYERS.Player_Name%></h1>
+<form action="/players/update" method="get">
+
+
+    <input type="hidden" id="player_id" name="player_id" value="<%= PLAYERS.player_id %>">
+    Player Name: <input id="Player_Name" name="Player_Name" type="text" value="<%= PLAYERS.Player_Name%>"/>
+    <br />
+
+    Game Title:
+    <select id="Game_Title" name="Game_Title">
+        <% for(var i=0; GAME_TITLES.length > i; i++ ) { %>
+        <option value="<%= GAME_TITLES[i].Game_Title %>"><%= GAME_TITLES[i].Game_Title + ', ' + GAME_TITLES[i].Team_Based_or_1v1 %></option>
+        <% } %>
+    </select>
+
+    <br />
+
+    <br />
+
+    <input type="submit" />
+
+</form>
+
+<%- include("../includes/footer.ejs"); %>

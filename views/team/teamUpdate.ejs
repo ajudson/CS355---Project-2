@@ -1,0 +1,17 @@
+<%- include("../includes/header.ejs", {title: "Update " + TEAM.Team_Name}); %>
+
+<h1>Update <%= TEAM.Team_Name%></h1>
+<form action="/team/update" method="get">
+
+
+    <input type="hidden" id="team_id" name="team_id" value="<%= TEAM.team_id %>">
+    Team Name: <input id="Team_Name" name="Team_Name" type="text" value="<%= TEAM.Team_Name%>"/>
+
+    <br />
+    <br />
+
+    <input type="submit" />
+
+</form>
+
+<%- include("../includes/footer.ejs"); %>

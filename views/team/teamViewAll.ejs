@@ -1,0 +1,24 @@
+<%- include("../includes/header.ejs", {title:"Teams - View All"}); %>
+
+<h1>Teams</h1>
+<a href="/team/add">Add New Team</a> <br />
+
+<table border="1">
+    <tr><th>Team Name</th><th>Action</th></tr>
+    <% for(var i=0; result.length > i; i++ ) { %>
+    <tr>
+        <td><a href="/team/?Team_Name=<%= result[i].Team_Name %>"><%= result[i].Team_Name%> </a></td>
+        <td>
+            <button onclick="event.preventDefault();window.location.href='/team/edit/?Team_Name=<%= result[i].Team_Name %>'">Edit</button>
+            <form action="/team/delete/" style="display:inline;">
+                <input type="hidden" name="Team_Name" id="Team_Name" value="<%= result[i].Team_Name %>" />
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    <% } %>
+</table>
+
+<br />
+<a href="/"><< back</a>
+<%- include("../includes/footer.ejs"); %>

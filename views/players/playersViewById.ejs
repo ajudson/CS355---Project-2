@@ -1,0 +1,11 @@
+<%- include("../includes/header.ejs", {title:"Players - " + result[0].Player_Name}); %>
+
+<h1>Player:</h1>
+<ul>
+    <li>Player Name: <%= result[0].Player_Name%></li>
+    <li>Game Title They Play: <%= result[0].Game_Title %></li>
+</ul>
+<br />
+<a href="/players/all"><< back</a>
+
+<%- include("../includes/footer.ejs"); %>

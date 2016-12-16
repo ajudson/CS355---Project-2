@@ -1,8 +1,5 @@
-<html>
-<head>
-    <title>Game Title - <%= result[0].Game_Title %></title>
-</head>
-<body>
+<%- include("../includes/header.ejs", {title:"Game Titles - " + result[0].Game_Title}); %>
+
 <h1>Game Title</h1>
 <ul>
     <li>Game Title: <%= result[0].Game_Title%></li>
@@ -10,6 +7,5 @@
 </ul>
 <br />
 <a href="/gametitle/all"><< back</a>
-</body>
 
-</html>
+<%- include("../includes/footer.ejs"); %>

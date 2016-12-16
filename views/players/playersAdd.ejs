@@ -1,0 +1,21 @@
+<%- include("../includes/header.ejs", {title:"Add New Player"}); %>
+
+
+<h1>Add New Player</h1>
+<form action="/players/insert" method="get">
+    Player Name: <input id="Player_Name" name="Player_Name" type="text" /> <br />
+
+    Game Title:
+    <select id="Game_Title" name="Game_Title">
+        <% for(var i=0; GAME_TITLES.length > i; i++ ) { %>
+        <option value="<%= GAME_TITLES[i].Game_Title %>"><%= GAME_TITLES[i].Game_Title + ', ' + GAME_TITLES[i].Team_Based_or_1v1 %></option>
+        <% } %>
+    </select>
+
+    <br />
+
+
+    <input type="submit" />
+
+</form>
+<%- include("../includes/footer.ejs"); %>

@@ -1,0 +1,10 @@
+<%- include("../includes/header.ejs", {title:"Tournaments - " + result[0].Tournament_Name}); %>
+
+<h1>Tournament:</h1>
+<ul>
+    <li>Tournament Name: <%= result[0].Tournament_Name%></li>
+</ul>
+<br />
+<a href="/tournaments/all"><< back</a>
+
+<%- include("../includes/footer.ejs"); %>

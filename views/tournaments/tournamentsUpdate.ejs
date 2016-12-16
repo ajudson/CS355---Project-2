@@ -1,0 +1,17 @@
+<%- include("../includes/header.ejs", {title: "Update " + TOURNAMENTS.Tournament_Name}); %>
+
+<h1>Update <%= TOURNAMENTS.Tournament_Name%></h1>
+<form action="/tournaments/update" method="get">
+
+
+    <input type="hidden" id="tournament_id" name="tournament_id" value="<%= TOURNAMENTS.tournament_id %>">
+    Tournament Name: <input id="Tournament_Name" name="Tournament_Name" type="text" value="<%= TOURNAMENTS.Tournament_Name%>"/>
+
+    <br />
+    <br />
+
+    <input type="submit" />
+
+</form>
+
+<%- include("../includes/footer.ejs"); %>

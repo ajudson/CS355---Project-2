@@ -1,0 +1,14 @@
+<%- include("../includes/header.ejs", {title:"Add New Team"}); %>
+
+
+<h1>Add New Team</h1>
+<form action="/team/insert" method="get">
+    Team Name: <input id="Team_Name" name="Team_Name" type="text" /> <br />
+
+    <br />
+
+
+    <input type="submit" />
+
+</form>
+<%- include("../includes/footer.ejs"); %>
