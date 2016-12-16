@@ -49,6 +49,8 @@ router.get('/', function(req, res){
                         uniq_MapStage.push(MapStage[i]);
                     }
                 }
+
+
 /*
                 uniq_CharacterHero = [];
                 for(var i=0; i < CharacterHero.length-1; i++){

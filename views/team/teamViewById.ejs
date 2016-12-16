@@ -3,6 +3,16 @@
 <h1>Team:</h1>
 <ul>
     <li>Team Name: <%= result[0].Team_Name%></li>
+
+
+    <li>Roster:
+        <ul>
+            <% for(var i=0; result.length > i; i++ ) { %>
+            <li>  <a href="/players/?Player_Name=<%= result[i].Player_Name %>"><%= %> <%= result[i].Player_Name %></a></li>
+            <% } %>
+        </ul>
+    </li>
+
 </ul>
 <br />
 <a href="/team/all"><< back</a>

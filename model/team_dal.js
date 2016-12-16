@@ -11,7 +11,9 @@ exports.getAll = function(callback) {
 };
 
 exports.getById = function(Team_Name, callback) {
-    var query = 'SELECT * FROM TEAM WHERE Team_Name = ?';
+    var query = 'SELECT pot.* FROM TEAM ' +
+        'LEFT JOIN Player_on_Team pot on TEAM.Team_Name = pot.Team_Name ' +
+        'WHERE TEAM.Team_Name = ? ';
     var queryData = [Team_Name];
 
     connection.query(query, queryData, function(err, result) {
