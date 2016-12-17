@@ -1,14 +1,13 @@
-<%- include("../includes/header.ejs", {title:"Teams - " + result[0].Team_Name}); %>
+<%- include("../includes/header.ejs", {title:"Teams - " + result.Team_Name}); %>
 
 <h1>Team:</h1>
 <ul>
-    <li>Team Name: <%= result[0].Team_Name%></li>
-
+    <li>Team Name: <%= result[0].team_name%></li>
 
     <li>Roster:
         <ul>
             <% for(var i=0; result.length > i; i++ ) { %>
-            <li>  <a href="/players/?Player_Name=<%= result[i].Player_Name %>"><%= %> <%= result[i].Player_Name %></a></li>
+            <li>  <a href="/players/?player_id=<%= result[i].player_id %>"><%= %> <%= result[i].Player_Name %></a></li>
             <% } %>
         </ul>
     </li>

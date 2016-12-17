@@ -19,11 +19,11 @@ router.get('/all', function(req, res) {
 
 //view team for a given id
 router.get('/', function(req, res){
-    if(req.query.Team_Name == null) {
-        res.send('Team_Name is null');
+    if(req.query.team_id == null) {
+        res.send('team_id is null');
     }
     else {
-        team_dal.getById(req.query.Team_Name, function(err,result) {
+        team_dal.getById(req.query.team_id, function(err,result) {
             if (err) {
                 res.send(err);
             }

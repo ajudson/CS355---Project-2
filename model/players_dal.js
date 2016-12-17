@@ -43,9 +43,9 @@ exports.delete = function(player_id, callback) {
     });
 };
 
-exports.edit = function(Player_Name, callback) {
-    var query = 'SELECT * FROM PLAYERS WHERE Player_Name = ?';
-    var queryData = [Player_Name];
+exports.edit = function(player_id, callback) {
+    var query = 'SELECT * FROM PLAYERS WHERE player_id = ?';
+    var queryData = [player_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -54,7 +54,8 @@ exports.edit = function(Player_Name, callback) {
 
 exports.update = function(params, callback) {
 
-    var query = 'UPDATE PLAYERS SET Player_Name = ?, gametitle_id = ? WHERE player_id = ?';
+    var query = 'UPDATE PLAYERS SET Player_Name = ?, gametitle_id = ? WHERE player_id = ?;' +
+        'UPDATE Player_on_Team SET player_id = ?, team_id = ? WHERE player_id = ?';
     var queryData = [params.Player_Name, params.gametitle_id, params.player_id];
     console.log(params.Player_Name);
     console.log(params.gametitle_id);

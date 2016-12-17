@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var players_dal = require('../model/players_dal');
 var gametitle_dal = require('../model/gametitle_dal');
+var team_dal = require('../model/team_dal');
 
 //view all players
 router.get('/all', function(req, res) {
@@ -133,8 +134,8 @@ router.get('/delete', function(req, res){
 
 
 router.get('/edit', function(req, res){
-    if(req.query.Player_Name == null) {
-        res.send('A Player_Name is required');
+    if(req.query.player_id == null) {
+        res.send('A player_id is required');
     }
     else {
         gametitle_dal.getAll(function(err, gametitleres){
@@ -142,13 +143,20 @@ router.get('/edit', function(req, res){
                 res.send(err);
             }
             else{
-                players_dal.edit(req.query.Player_Name, function(err, result){
+                team_dal.getAll(function (err, teamres) {
                     if(err){
                         res.send(err);
                     }
-                    else {
-                        console.log(result);
-                        res.render('players/playersUpdate', {'PLAYERS': result[0], 'GAME_TITLES': gametitleres});
+                    else{
+                        players_dal.edit(req.query.player_id, function(err, result){
+                            if(err){
+                                res.send(err);
+                            }
+                            else {
+                                console.log(result);
+                                res.render('players/playersUpdate', {'PLAYERS': result[0], 'GAME_TITLES': gametitleres, 'TEAM': teamres});
+                            }
+                        });
                     }
                 });
             }

@@ -10,13 +10,15 @@ exports.getAll = function(callback) {
     });
 };
 
-exports.getById = function(Team_Name, callback) {
-    var query = 'SELECT pot.* FROM TEAM ' +
-        'LEFT JOIN Player_on_Team pot on TEAM.Team_Name = pot.Team_Name ' +
-        'WHERE TEAM.Team_Name = ? ';
-    var queryData = [Team_Name];
+exports.getById = function(team_id, callback) {
+    var query = 'SELECT p.player_id, p.Player_Name, TEAM.team_name FROM TEAM ' +
+        'LEFT JOIN Player_on_Team pot on TEAM.team_id = pot.team_id ' +
+        'LEFT JOIN PLAYERS p on pot.player_id = p.player_id ' +
+        'WHERE TEAM.team_id = ? ';
+    var queryData = [team_id];
 
     connection.query(query, queryData, function(err, result) {
+        console.log(team_id);
         callback(err, result);
     });
 };

@@ -7,7 +7,7 @@
     <tr><th>Team Name</th><th>Action</th></tr>
     <% for(var i=0; result.length > i; i++ ) { %>
     <tr>
-        <td><a href="/team/?Team_Name=<%= result[i].Team_Name %>"><%= result[i].Team_Name%> </a></td>
+        <td><a href="/team/?team_id=<%= result[i].team_id %>"><%= result[i].Team_Name%> </a></td>
         <td>
             <button onclick="event.preventDefault();window.location.href='/team/edit/?Team_Name=<%= result[i].Team_Name %>'">Edit</button>
             <form action="/team/delete/" style="display:inline;">

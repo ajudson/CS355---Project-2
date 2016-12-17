@@ -16,6 +16,15 @@
     </select>
 
     <br />
+    Team:
+    <select id="team_id" name="team_id">
+        <% for(var i=0; TEAM.length > i; i++) { %>
+        <option value="<% TEAM[i].team_id %>"> <%= TEAM[i].Team_Name %> </option>
+        <% } %>
+    </select>
+
+
+    <br />
 
     <br />
 

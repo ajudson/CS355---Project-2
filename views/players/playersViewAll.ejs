@@ -11,7 +11,7 @@
         <td><a href="/players/?player_id=<%= result[i].player_id %>"><%= result[i].Player_Name%> </a></td>
         <td><%= result[i].Game_Title %></td>
         <td>
-            <button onclick="event.preventDefault();window.location.href='/players/edit/?Player_Name=<%= result[i].Player_Name %>'">Edit</button>
+            <button onclick="event.preventDefault();window.location.href='/players/edit/?player_id=<%= result[i].player_id %>'">Edit</button>
             <form action="/players/delete/" style="display:inline;">
                 <input type="hidden" name="player_id" id="player_id" value="<%= result[i].player_id %>" />
                 <input type="submit" value="Delete"/>
