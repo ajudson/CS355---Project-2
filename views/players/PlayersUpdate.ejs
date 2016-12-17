@@ -9,9 +9,9 @@
     <br />
 
     Game Title:
-    <select id="Game_Title" name="Game_Title">
+    <select id="gametitle_id" name="gametitle_id">
         <% for(var i=0; GAME_TITLES.length > i; i++ ) { %>
-        <option value="<%= GAME_TITLES[i].Game_Title %>"><%= GAME_TITLES[i].Game_Title + ', ' + GAME_TITLES[i].Team_Based_or_1v1 %></option>
+        <option value="<%= GAME_TITLES[i].gametitle_id %>"><%= GAME_TITLES[i].Game_Title + ', ' + GAME_TITLES[i].Team_Based_or_1v1 %></option>
         <% } %>
     </select>
 

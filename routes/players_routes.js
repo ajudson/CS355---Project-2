@@ -19,11 +19,11 @@ router.get('/all', function(req, res) {
 
 //view player for a given id
 router.get('/', function(req, res){
-    if(req.query.Player_Name == null) {
-        res.send('Player_Name is null');
+    if(req.query.player_id == null) {
+        res.send('player_id is null');
     }
     else {
-        players_dal.getById(req.query.Player_Name, function(err,result) {
+        players_dal.getById(req.query.player_id, function(err,result) {
             if (err) {
                 res.send(err);
             }
@@ -102,6 +102,7 @@ router.get('/insert', function(req, res){
         // passing all the query parameters (req.query) to the insert function instead of each individually
         players_dal.insert(req.query, function(err,result) {
             if (err) {
+                console.log(123);
                 res.send(err);
             }
             else {
@@ -114,11 +115,11 @@ router.get('/insert', function(req, res){
 
 // Delete a player for the given player_name
 router.get('/delete', function(req, res){
-    if(req.query.Player_Name == null) {
-        res.send('Player_Name is null');
+    if(req.query.player_id == null) {
+        res.send('player_id is null');
     }
     else {
-        players_dal.delete(req.query.Player_Name, function(err, result){
+        players_dal.delete(req.query.player_id, function(err, result){
             if(err) {
                 res.send(err);
             }
@@ -150,17 +151,29 @@ router.get('/edit', function(req, res){
                         res.render('players/playersUpdate', {'PLAYERS': result[0], 'GAME_TITLES': gametitleres});
                     }
                 });
-
             }
-
         });
-
     }
-
 });
 
-
-
+/*
+router.get('/edit', function(req, res){
+    if(req.query.Player_Name == null) {
+        res.send('A Player_Name is required');
+    }
+        else{
+            players_dal.edit(req.query.Player_Name, function(err, result){
+                if(err){
+                    res.send(err);
+                }
+                else {
+                    console.log(result);
+                    res.render('players/playersUpdate', {'PLAYERS': result[0]});
+                }
+            });
+        }
+});
+*/
 /*
 router.get('/edit', function(req, res){
     if(req.query.Player_Name == null) {

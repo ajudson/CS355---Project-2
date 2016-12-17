@@ -7,6 +7,22 @@
 
     <br />
 
+    Teams Participating
+    <select id="team_id" name="team_id" multiple="multiple">
+        <% for(var i=0; team.length > i; i++) { %>
+        <option value="<%= team[i].team_id%>"><%= team[i].Team_Name%></option>
+
+
+        <% } %>
+
+    </select>
+
+    <!-- Initialize the multiselect plugin: -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#team_id').multiselect();
+        });
+    </script>
 
     <input type="submit" />
 

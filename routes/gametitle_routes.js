@@ -18,11 +18,11 @@ router.get('/all', function(req, res) {
 
 //view gametitle for a given id
 router.get('/', function(req, res){
-    if(req.query.Game_Title == null) {
-        res.send('Game_Title is null');
+    if(req.query.gametitle_id == null) {
+        res.send('gametitle_id is null');
     }
     else {
-        gametitle_dal.getById(req.query.Game_Title, function(err,result) {
+        gametitle_dal.getById(req.query.gametitle_id, function(err,result) {
             if (err) {
                 res.send(err);
             }
@@ -45,7 +45,8 @@ router.get('/', function(req, res){
                 var uniq_MapStage = MapStage.filter(function (elem, index, self) {
                     return index == self.indexOf(elem);
                 });
-
+                console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+                console.log(CharacterHero);
                 res.render('gametitle/gametitleViewById', {'result': result, 'CharacterHero': uniq_CharacterHero, 'MapStage': uniq_MapStage});
             }
         });
@@ -87,11 +88,11 @@ router.get('/insert', function(req, res){
 
 // Delete a gametitle for the given game_title
 router.get('/delete', function(req, res){
-    if(req.query.Game_Title == null) {
-        res.send('Game_Title is null');
+    if(req.query.gametitle_id == null) {
+        res.send('gametitle_id is null');
     }
     else {
-        gametitle_dal.delete(req.query.Game_Title, function(err, result){
+        gametitle_dal.delete(req.query.gametitle_id, function(err, result){
             if(err) {
                 res.send(err);
             }

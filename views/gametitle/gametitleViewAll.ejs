@@ -8,12 +8,12 @@
     <tr><th>Game Title</th><th>Team Based or 1v1</th><th>Action</th></tr>
     <% for(var i=0; result.length > i; i++ ) { %>
     <tr>
-        <td><a href="/gametitle/?Game_Title=<%= result[i].Game_Title %>"><%= result[i].Game_Title%> </a></td>
+        <td><a href="/gametitle/?gametitle_id=<%= result[i].gametitle_id %>"><%= result[i].Game_Title%> </a></td>
         <td><%= result[i].Team_Based_or_1v1 %></td>
         <td>
             <button onclick="event.preventDefault();window.location.href='/gametitle/edit/?Game_Title=<%= result[i].Game_Title %>'">Edit</button>
             <form action="/gametitle/delete/" style="display:inline;">
-                <input type="hidden" name="Game_Title" id="Game_Title" value="<%= result[i].Game_Title %>" />
+                <input type="hidden" name="gametitle_id" id="gametitle_id" value="<%= result[i].gametitle_id %>" />
                 <input type="submit" value="Delete"/>
             </form>
         </td>

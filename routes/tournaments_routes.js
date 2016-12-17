@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var tournaments_dal = require('../model/tournaments_dal');
-
+var team_dal = require('../model/team_dal');
 
 //view all tournaments
 router.get('/all', function(req, res) {
@@ -10,7 +10,6 @@ router.get('/all', function(req, res) {
             res.send(err);
         }
         else{
-            console.log();
             res.render('tournaments/tournamentsViewAll', {'result': result});
         }
     });
@@ -19,16 +18,17 @@ router.get('/all', function(req, res) {
 
 //view tournaments for a given id
 router.get('/', function(req, res){
-    if(req.query.Tournament_Name == null) {
-        res.send('Tournament_Name is null');
+    if(req.query.tournament_id == null) {
+        res.send('tournament_id is null');
     }
     else {
-        tournaments_dal.getById(req.query.Tournament_Name, function(err,result) {
+        tournaments_dal.getById(req.query.tournament_id, function(err,result) {
             if (err) {
+                console.log(1);
                 res.send(err);
             }
             else {
-                console.log(result);
+                console.log(2);
                 res.render('tournaments/tournamentsViewById', {'result': result});
             }
         });
@@ -39,12 +39,15 @@ router.get('/', function(req, res){
 router.get('/add', function(req, res){
     // passing all the query parameters (req.query) to the insert function instead of each individually
     tournaments_dal.getAll(function(err,result) {
-        if(err){
-            res.send(err);
-        }
-        else{
-            res.render('tournaments/tournamentsAdd', {'tournaments': result});
-        }
+        team_dal.getAll(function(err,team){
+            if(err){
+                res.send(err);
+            }
+            else{
+                res.render('tournaments/tournamentsAdd', {'tournaments': result, 'team': team});
+            }
+        });
+
     });
 });
 
@@ -89,8 +92,33 @@ router.get('/edit', function(req, res){
         res.send('A Tournament Name is required');
     }
     else {
-        tournaments_dal.edit(req.query.Tournament_Name, function(err, result){
-            res.render('tournaments/tournamentsUpdate', {TOURNAMENTS: result[0]});
+        team_dal.getAll(function (err, teamres){
+           if (err){
+               res.send(err);
+           }
+           else{
+               tournaments_dal.edit(req.query.Tournament_Name, function(err, result){
+                   if(err){
+                       res.send(err);
+                   }
+                   else{
+                       var team = [teamres.length];
+
+                       for (var i = 0; i < teamres.length; i++) {
+                           team[i] = teamres[i].team_name;
+                       }
+                        var uniqteam = team.filter(function(elem, index, self){
+                            return index == self.indexOf(elem);
+                        });
+
+                       uniqvalues = {'team': uniqteam};
+                       console.log('UNIQZ');
+                       console.log(uniqvalues);
+                       res.render('tournaments/tournamentsUpdate', {TOURNAMENTS: result[0], 'team': teamres});
+
+                   }
+               });
+           }
         });
     }
 });

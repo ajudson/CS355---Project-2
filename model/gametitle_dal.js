@@ -10,15 +10,15 @@ exports.getAll = function(callback) {
     });
 };
 
-exports.getById = function(Game_Title, callback) {
+exports.getById = function(gametitle_id, callback) {
     var query = 'SELECT gt.*, ch.CharacterHero, ms.MapStage FROM GAME_TITLES gt ' +
-        'LEFT JOIN CharacterHero ch on gt.Game_Title = ch.Game_Title ' +
-        'LEFT JOIN MapStage ms on gt.Game_Title = ms.Game_Title ' +
-        'WHERE gt.Game_Title = ? ';
-    var queryData = [Game_Title];
-   ;
+        'LEFT JOIN CharacterHero ch on gt.gametitle_id = ch.gametitle_id ' +
+        'LEFT JOIN MapStage ms on gt.gametitle_id = ms.gametitle_id ' +
+        'WHERE gt.gametitle_id = ? ';
+    var queryData = [gametitle_id];
+
     connection.query(query, queryData, function(err, result) {
-        console.log(result.width);
+        console.log();
         console.log(result);
         callback(err, result);
     });
@@ -37,9 +37,9 @@ exports.insert = function(params, callback) {
 
 };
 
-exports.delete = function(Game_Title, callback) {
-    var query = 'DELETE FROM GAME_TITLES WHERE Game_Title = ?';
-    var queryData = [Game_Title];
+exports.delete = function(gametitle_id, callback) {
+    var query = 'DELETE FROM GAME_TITLES WHERE gametitle_id = ?';
+    var queryData = [gametitle_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
